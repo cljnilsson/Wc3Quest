@@ -1,0 +1,48 @@
+package Quest
+
+import QuestExtensions
+import QuestObjective
+
+public enum questState
+    FAILED
+    COMPLETED
+    UNDISCOVERED
+    DISCOVERED
+
+public class Quest
+    quest q
+    construct(boolean required)
+        q = CreateQuest()
+        q.setRequired(required)
+
+    function setTitle(string title)
+        q.setTitle(title)
+
+    function setDescription(string title)
+        q.setDescription(title)
+
+    function setIcon(string path)
+        q.setIcon(path)
+
+    function isEnabled() returns boolean
+        return q.isEnabled()
+
+    function isCompleted() returns boolean
+        return q.isCompleted()
+
+    function setState(questState state)
+        switch state
+            case state.COMPLETED
+                q.completed(true)
+            case state.FAILED
+                q.failed(true)
+            case state.UNDISCOVERED
+                q.discovered(false)
+            case state.DISCOVERED
+                q.discovered(true)
+
+    function addObjective(string text) returns QuestObjective
+        return new QuestObjective(q, text)
+        
+    ondestroy
+        q.remove()

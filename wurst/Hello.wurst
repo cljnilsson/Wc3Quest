@@ -1,0 +1,23 @@
+package Hello
+
+import Quest
+import QuestObjective
+
+Quest farmQ
+QuestObjective farmObj
+
+init
+	farmQ = new Quest(true)
+	..setTitle("Dope Quest")
+	..setIcon("ReplaceableTextures\\CommandButtons\\BTNDivineIntervention.blp")
+	..setDescription("A farmer's wife has been missing for a few days")
+	
+	farmObj = farmQ.addObjective("Find the farmer's wife")
+
+	CreateTrigger()
+	..registerUnitInRange(CreateUnit(players[0], 'nvlw', 300, 300, 0), 250, null)
+	..addAction(() -> begin
+		print("Wife found!")
+		farmObj.complete(true)
+		farmQ.setState(questState.COMPLETED)
+	end)
