@@ -19,5 +19,5 @@ init
 	..addAction(() -> begin
 		print("Wife found!")
 		farmObj.complete(true)
-		farmQ.setState(questState.COMPLETED)
+		farmQ.setState(QuestState.COMPLETED)
 	end)
