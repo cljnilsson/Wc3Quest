@@ -1,10 +1,10 @@
 package Hello
 
 import Quest
-import QuestObjective
+import QuestItem
 
 Quest farmQ
-QuestObjective farmObj
+QuestItem farmObj
 
 init
 	farmQ = new Quest(true)
